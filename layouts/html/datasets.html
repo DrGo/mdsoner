@@ -1,0 +1,18 @@
+{{define "datasets"}}
+{{template "header"}}
+{{ $root := . }}
+
+<h1>{{ $root.Name }}</h1>
+
+{{range $block := $root.Children}}
+  <h2>{{ $block.Name }}</h2>
+  <h2>fields</h2>    
+  {{$flds := $block.ChildByName "fields"}}
+  {{range $fld := $flds.Children }}
+      <h3>Field Name: {{$fld.Name}}</h3>
+  {{end}}   
+
+{{end}}
+
+{{template "footer"}}
+{{end}}
